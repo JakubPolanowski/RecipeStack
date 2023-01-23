@@ -23,7 +23,7 @@ class Ingredient(models.Model):
     name = models.CharField(max_length=50)
 
 
-class FoodGroups(models.Model):
+class FoodGroup(models.Model):
     # food groups that ingredients belong in
     name = models.CharField(max_length=50)
     ingredients = models.ManyToManyField(Ingredient)
