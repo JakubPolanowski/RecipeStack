@@ -22,11 +22,17 @@ class Ingredient(models.Model):
     # ingredient used in recipe
     name = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.name
+
 
 class FoodGroup(models.Model):
     # food groups that ingredients belong in
     name = models.CharField(max_length=50)
     ingredients = models.ManyToManyField(Ingredient, blank=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Diet(models.Model):
