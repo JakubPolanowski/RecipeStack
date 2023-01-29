@@ -3,10 +3,6 @@ from . import models
 # Register your models here.
 
 
-class FlavorInline(admin.StackedInline):
-    model = models.Flavor
-
-
 class FlavorAdmin(admin.ModelAdmin):
     search_fields = ['name']
     list_display = ['name']
@@ -63,9 +59,26 @@ class DietAdmin(admin.ModelAdmin):
 admin.site.register(models.Diet, DietAdmin)
 
 
+class RecipeFlavorInline(admin.TabularInline):
+    model = models.Recipe.flavors.through
+    extra = 1
+
+
+class RecipeMealInline(admin.TabularInline):
+    model = models.Recipe.meals.through
+    extra = 1
+
+
+class RecipeDietsInline(admin.TabularInline):
+    model = models.Recipe.diets.through
+    extra = 1
+
+
 class RecipeAdmin(admin.ModelAdmin):  # TODO make more usable
     search_fields = ['title']
     list_display = ['title']
+    exclude = ['flavors', 'meals', 'diets']
+    inlines = [RecipeFlavorInline, RecipeMealInline, RecipeDietsInline]
 
 
 admin.site.register(models.Recipe, RecipeAdmin)
