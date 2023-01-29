@@ -7,15 +7,24 @@ class Flavor(models.Model):
     # various flavors that are attached to recipes many to many
     name = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.name
+
 
 class Meal(models.Model):
     # various meals (such as morning, Dinner) that are attached to recipes many to many
     name = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.name
+
 
 class Unit(models.Model):  # TODO figure out how to handle compatible units/conversion
     # volume, temperature, etc. units
     name = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.name
 
 
 class Ingredient(models.Model):
@@ -39,6 +48,9 @@ class Diet(models.Model):
     # diet that are attached to recipes many to many
     name = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.name
+
 
 class Recipe(models.Model):
     title = models.CharField(max_length=200)
@@ -47,6 +59,9 @@ class Recipe(models.Model):
     meals = models.ManyToManyField(Meal)
     diets = models.ManyToManyField(Diet)
     # TODO figure out how to handle steps/instructions
+
+    def __str__(self):
+        return self.title
 
 
 class RecipeIngredients(models.Model):
