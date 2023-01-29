@@ -27,6 +27,17 @@ class Unit(models.Model):  # TODO figure out how to handle compatible units/conv
         return self.name
 
 
+class UnitConversion(models.Model):
+    from_unit = models.ForeignKey(
+        Unit, related_name='from_unit', on_delete=models.CASCADE)
+    factor = models.FloatField()
+    to_unit = models.ForeignKey(
+        Unit, related_name='to_unit', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.from_unit} to {self.to_unit}"
+
+
 class Ingredient(models.Model):
     # ingredient used in recipe
     name = models.CharField(max_length=50, unique=True)

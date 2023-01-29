@@ -27,6 +27,13 @@ class UnitAdmin(admin.ModelAdmin):
 admin.site.register(models.Unit, UnitAdmin)
 
 
+class UnitConversionAdmin(admin.ModelAdmin):
+    ...
+
+
+admin.site.register(models.UnitConversion, UnitConversionAdmin)
+
+
 class FoodGroupMembershipInline(admin.TabularInline):
     model = models.FoodGroup.ingredients.through
     extra = 1
