@@ -88,5 +88,3 @@ class RecipeAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.Recipe, RecipeAdmin)
-
-# TODO added recipeingredients admin
