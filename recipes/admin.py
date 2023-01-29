@@ -74,11 +74,17 @@ class RecipeDietsInline(admin.TabularInline):
     extra = 1
 
 
+class RecipeIngredientsInline(admin.TabularInline):
+    model = models.RecipeIngredients
+    extra = 3
+
+
 class RecipeAdmin(admin.ModelAdmin):
     search_fields = ['title']
     list_display = ['title']
     exclude = ['flavors', 'meals', 'diets']
-    inlines = [RecipeFlavorInline, RecipeMealInline, RecipeDietsInline]
+    inlines = [RecipeFlavorInline, RecipeMealInline,
+               RecipeDietsInline, RecipeIngredientsInline]
 
 
 admin.site.register(models.Recipe, RecipeAdmin)
