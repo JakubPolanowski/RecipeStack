@@ -32,7 +32,7 @@ class FoodGroupMembershipInline(admin.TabularInline):
     extra = 1
 
 
-class IngredientAdmin(admin.ModelAdmin):  # TODO make more usable
+class IngredientAdmin(admin.ModelAdmin):
     search_fields = ['name']
     list_display = ['name']
     inlines = [FoodGroupMembershipInline]
@@ -41,7 +41,7 @@ class IngredientAdmin(admin.ModelAdmin):  # TODO make more usable
 admin.site.register(models.Ingredient, IngredientAdmin)
 
 
-class FoodGroupAdmin(admin.ModelAdmin):  # TODO make more usable
+class FoodGroupAdmin(admin.ModelAdmin):
     search_fields = ['name']
     list_display = ['name']
     exclude = ['ingredients']
@@ -74,7 +74,7 @@ class RecipeDietsInline(admin.TabularInline):
     extra = 1
 
 
-class RecipeAdmin(admin.ModelAdmin):  # TODO make more usable
+class RecipeAdmin(admin.ModelAdmin):
     search_fields = ['title']
     list_display = ['title']
     exclude = ['flavors', 'meals', 'diets']
