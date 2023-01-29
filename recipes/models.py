@@ -58,6 +58,9 @@ class Recipe(models.Model):
     flavors = models.ManyToManyField(Flavor)
     meals = models.ManyToManyField(Meal)
     diets = models.ManyToManyField(Diet)
+    ingredients = models.ManyToManyField(
+        Ingredient, through='RecipeIngredients')
+
     # TODO figure out how to handle steps/instructions
 
     def __str__(self):
@@ -67,5 +70,5 @@ class Recipe(models.Model):
 class RecipeIngredients(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     ingredient = models.ForeignKey(Ingredient, on_delete=models.PROTECT)
-    unit = models.ForeignKey(Unit, on_delete=models.PROTECT)
     amount = models.FloatField()
+    unit = models.ForeignKey(Unit, on_delete=models.PROTECT)
