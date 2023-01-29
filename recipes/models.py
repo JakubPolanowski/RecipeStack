@@ -5,7 +5,7 @@ from django.db import models
 
 class Flavor(models.Model):
     # various flavors that are attached to recipes many to many
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
 
     def __str__(self):
         return self.name
@@ -13,7 +13,7 @@ class Flavor(models.Model):
 
 class Meal(models.Model):
     # various meals (such as morning, Dinner) that are attached to recipes many to many
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
 
     def __str__(self):
         return self.name
@@ -21,7 +21,7 @@ class Meal(models.Model):
 
 class Unit(models.Model):  # TODO figure out how to handle compatible units/conversion
     # volume, temperature, etc. units
-    name = models.CharField(max_length=10)
+    name = models.CharField(max_length=10, unique=True)
 
     def __str__(self):
         return self.name
@@ -29,7 +29,7 @@ class Unit(models.Model):  # TODO figure out how to handle compatible units/conv
 
 class Ingredient(models.Model):
     # ingredient used in recipe
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
 
     def __str__(self):
         return self.name
@@ -37,7 +37,7 @@ class Ingredient(models.Model):
 
 class FoodGroup(models.Model):
     # food groups that ingredients belong in
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
     ingredients = models.ManyToManyField(Ingredient, blank=True)
 
     def __str__(self):
@@ -46,7 +46,7 @@ class FoodGroup(models.Model):
 
 class Diet(models.Model):
     # diet that are attached to recipes many to many
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
 
     def __str__(self):
         return self.name
