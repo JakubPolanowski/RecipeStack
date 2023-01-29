@@ -19,9 +19,10 @@ class Meal(models.Model):
         return self.name
 
 
-class Unit(models.Model):  # TODO figure out how to handle compatible units/conversion
+class Unit(models.Model):
     # volume, temperature, etc. units
-    name = models.CharField(max_length=10, unique=True)
+    name = models.CharField(max_length=50, unique=True)
+    shorthand = models.CharField(max_length=5, unique=True)
 
     def __str__(self):
         return self.name
