@@ -33,6 +33,7 @@ admin.site.register(models.Unit, UnitAdmin)
 
 class FoodGroupMembershipInline(admin.TabularInline):
     model = models.FoodGroup.ingredients.through
+    extra = 1
 
 
 class IngredientAdmin(admin.ModelAdmin):  # TODO make more usable
@@ -47,8 +48,8 @@ admin.site.register(models.Ingredient, IngredientAdmin)
 class FoodGroupAdmin(admin.ModelAdmin):  # TODO make more usable
     search_fields = ['name']
     list_display = ['name']
+    exclude = ['ingredients']
     inlines = [FoodGroupMembershipInline]
-    exclude = ['members']
 
 
 admin.site.register(models.FoodGroup, FoodGroupAdmin)
